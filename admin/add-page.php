@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (!empty($_FILES['featured_image']['name'])) {
         $img_name = time() . "_" . basename($_FILES['featured_image']['name']);
         $tmp = $_FILES['featured_image']['tmp_name'];
-        move_uploaded_file($tmp, "uploads/" . $img_name);
+        move_uploaded_file($tmp, "../uploads/" . $img_name);
         $featured_image = $img_name;
     }
 

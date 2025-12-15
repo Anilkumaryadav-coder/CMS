@@ -37,9 +37,9 @@
       <a href="view-page.php"><i class="bi bi-pencil-square"></i> view Page</a>
     </div>
 
-    <div class="menu-item" onclick="toggleSubmenu('sericesSub')">
+    <div class="menu-item" onclick="toggleSubmenu('servicesSub')">
       <span><i class="bi bi-person"></i> Services</span>
-      <i id="arrow-usersSub" class="bi bi-chevron-right arrow"></i>
+      <i id="arrow-servicesSub" class="bi bi-chevron-right arrow"></i>
     </div>
     <div class="submenu" id="sericesSub">
       <a href="#"><i class="bi bi-person-plus"></i> Add Service </a>
@@ -60,7 +60,7 @@
       <i id="arrow-settingsSub" class="bi bi-chevron-right arrow"></i>
     </div>
     <div class="submenu" id="settingsSub">
-      <a href="settings.php"><i class="bi bi-sliders"></i> General</a>
+      <a href="general-settings.php"><i class="bi bi-sliders"></i> General</a>
       <a href="seo-settings.php"><i class="bi bi-bar-chart-line"></i> SEO</a>
       <a href="backup.php"><i class="bi bi-hdd-stack"></i> Backup</a>
       <a href="media-library.php"><i class="bi bi-image"></i> Media Library</a>

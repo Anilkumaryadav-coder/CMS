@@ -45,7 +45,7 @@
       <i id="arrow-settingsSub" class="bi bi-chevron-right arrow"></i>
     </div>
     <div class="submenu" id="settingsSub">
-      <a href="settings.php"><i class="bi bi-sliders"></i> General</a>
+      <a href="general-settings.php"><i class="bi bi-sliders"></i> General</a>
       <a href="seo-settings.php"><i class="bi bi-bar-chart-line"></i> SEO</a>
       <a href="backup.php"><i class="bi bi-hdd-stack"></i> Backup</a>
       <a href="media-library.php"><i class="bi bi-image"></i> Media Library</a>
