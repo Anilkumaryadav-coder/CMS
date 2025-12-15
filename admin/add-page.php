@@ -1,6 +1,17 @@
 <?php
 include "db.php";
 
+
+/* Fetch clients */
+$clients = [];
+$clientQuery = mysqli_query($conn, "SELECT id, full_name, company_name FROM clients ORDER BY full_name ASC");
+if ($clientQuery) {
+    while ($row = mysqli_fetch_assoc($clientQuery)) {
+        $clients[] = $row;
+    }
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $title = mysqli_real_escape_string($conn, $_POST['title']);
@@ -143,6 +154,23 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <div class="content-wrapper">
     <div class="form-container">
+<!-- CLIENTS SECTION -->
+<h2 style="margin-bottom:15px;">Select Client</h2>
+
+<label>Client</label>
+<select name="client_id" class="form-control" required>
+    <option value="">-- Select Client --</option>
+    <?php foreach ($clients as $client) { ?>
+        <option value="<?= $client['id']; ?>">
+            <?= htmlspecialchars($client['full_name']); ?>
+            <?php if (!empty($client['company_name'])) { ?>
+                (<?= htmlspecialchars($client['company_name']); ?>)
+            <?php } ?>
+        </option>
+    <?php } ?>
+</select>
+
+<hr style="margin:30px 0;">
 
         <h2>Add New Page</h2>
 
