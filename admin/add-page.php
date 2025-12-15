@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     ('$title', '$slug', '$content', '$featured_image', '$meta_title', '$meta_description', '$meta_keywords', '$video_url', '$banner_title', '$banner_subtitle', '$template', '$display_order', '$status')";
 
     if (mysqli_query($conn, $sql)) {
-        echo "<script>alert('Page Added Successfully!'); window.location='view-pages.php';</script>";
+        echo "<script>alert('Page Added Successfully!'); window.location='view-page.php';</script>";
     } else {
         echo "ERROR: " . mysqli_error($conn);
     }
@@ -149,11 +149,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </head>
 
 <body>
-
-<?php include "sidebar.php"; ?> <!-- Sidebar stays on left -->
+<!------ Sidebar ------>
+<?php include "sidebar.php"; ?> 
 
 <div class="content-wrapper">
     <div class="form-container">
+        
 <!-- CLIENTS SECTION -->
 <h2 style="margin-bottom:15px;">Select Client</h2>
 

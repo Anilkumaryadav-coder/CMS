@@ -46,7 +46,7 @@ include "db.php";
             $i = 1;
 
             while ($row = mysqli_fetch_assoc($result)) {
-                $img = $row['featured_image'] ? "uploads/" . $row['featured_image'] : "no-image.png";
+                $img = $row['featured_image'] ? "../uploads/" . $row['featured_image'] : "no-image.png";
 
                 echo "
                 <tr>

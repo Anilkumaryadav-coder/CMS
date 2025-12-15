@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
     $image_name = "";
     if (!empty($_FILES['image']['name'])) {
         $image_name = time() . "_" . $_FILES['image']['name'];
-        $target = "uploads/" . $image_name;
+        $target = "../uploads/" . $image_name;
         move_uploaded_file($_FILES['image']['tmp_name'], $target);
     }
 
