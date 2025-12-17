@@ -60,9 +60,11 @@ if (isset($_POST['submit'])) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Add Client | CMS Admin</title>
 <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-<link rel="stylesheet" href="/cms/css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+   <!-- Custom CSS -->
+  <link rel="stylesheet" href="/cms/css/styles.css">
 <style>
   body {
     background-color: #f2f6fa;
@@ -70,15 +72,16 @@ if (isset($_POST['submit'])) {
   }
 
   .container {
-    margin-left: 270px;
+    margin-left: 250px;
     padding: 30px;
   }
 
   h2 {
-    font-weight: 700;
-    margin-bottom: 30px;
+    font-weight: 500;
+    margin-bottom: 25px;
     color: #0d6efd;
-  }
+    font-size: 22px; /* medium heading */
+}
 
   .form-card {
     background-color: #fff;
@@ -185,12 +188,7 @@ if (isset($_POST['submit'])) {
           <input type="text" name="phone" placeholder="Enter phone number">
         </div>
 
-        <!-- Address -->
-        <div class="col-md-6">
-          <label>Address</label>
-          <textarea name="address" placeholder="Enter address"></textarea>
-        </div>
-
+    
         <!-- Website -->
         <div class="col-md-6">
           <label>Website</label>
@@ -275,11 +273,15 @@ if (isset($_POST['submit'])) {
         </div>
 
         <!-- Internal Notes -->
-        <div class="col-12">
+        <div class="col-6">
           <label>Internal Notes</label>
           <textarea name="internal_notes" placeholder="Add notes"></textarea>
         </div>
-
+        <!-- Address -->
+        <div class="col-md-6">
+          <label>Address</label>
+          <textarea name="address" placeholder="Enter address"></textarea>
+        </div>
         <!-- Logo Upload -->
         <div class="col-md-6">
           <label>Logo Upload</label>

@@ -6,8 +6,12 @@ include "db.php";
 <head>
     <meta charset="UTF-8">
     <title>View Pages | CMS Admin</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/cms/css/styles.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+   <!-- Custom CSS -->
+  <link rel="stylesheet" href="/cms/css/styles.css">
     <style>
         body { background: #eef1f4; font-family: Arial; }
         .content-wrapper { margin-left: 250px; padding: 30px; }

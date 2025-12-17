@@ -21,15 +21,19 @@
     </div>
 
 
-    <div class="menu-item" onclick="toggleSubmenu('servicesSub')">
-      <span><i class="bi bi-person"></i> Services</span>
-      <i id="arrow-usersSub" class="bi bi-chevron-right arrow"></i>
+   <div class="menu-item" onclick="toggleSubmenu('itemsSub')">
+      <span><i class="bi bi-person"></i> items</span>
+      <i id="arrow-servicesSub" class="bi bi-chevron-right arrow"></i>
     </div>
-    <div class="submenu" id="servicesSub">
-      <a href="#"><i class="bi bi-person-plus"></i> Add Service </a>
-      <a href="#"><i class="bi bi-pencil-square"></i> view Service</a>
+    <div class="submenu" id="itemsSub">
+       <a href="services.php"><i class="bi bi-person-plus"></i> services</a>
+       <a href="view-services.php"><i class="bi bi-pencil-square"></i> view services</a>
+       <a href="add-category.php"><i class="bi bi-person-plus"></i> Add category </a>
+       <a href="view-category.php"><i class="bi bi-pencil-square"></i> view category</a>
+   
+      <a href="add-product.php"><i class="bi bi-person-plus"></i> Add product </a>
+      <a href="view-product.php"><i class="bi bi-pencil-square"></i> view product</a>
     </div>
-
 
     <div class="menu-item" onclick="toggleSubmenu('usersSub')">
       <span><i class="bi bi-person"></i> Users</span>

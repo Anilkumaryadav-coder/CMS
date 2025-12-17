@@ -4,11 +4,12 @@
 <meta charset="UTF-8">
 <title>SEO Settings | CMS</title>
 
-<!-- Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-<link rel="stylesheet" href="/cms/css/styles.css">
-
+<!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+   <!-- Custom CSS -->
+  <link rel="stylesheet" href="/cms/css/styles.css">
 <style>
 body{
     margin:0;
@@ -36,7 +37,12 @@ body{
     color:#2563eb;
     margin-bottom:25px;
 }
-
+h2 {
+    font-weight: 500;
+    margin-bottom: 25px;
+    color: #0d6efd;
+    font-size: 22px; /* medium heading */
+}
 /* Form container */
 .form-box{
     background:#ffffff;

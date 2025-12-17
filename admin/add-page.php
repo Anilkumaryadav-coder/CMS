@@ -59,19 +59,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <!-- SUMMERNOTE EDITOR -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+     <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-lite.min.js"></script>
     <link rel="stylesheet" href="/cms/css/styles.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #eef1f4;
-            margin: 0;
-            padding: 0;
-        }
+       
 
         /* Match this width to your actual sidebar width */
         .content-wrapper {
-            margin-left: 250px; /* Sidebar width */
+            margin-left: 100px; /* Sidebar width */
             padding: 30px;
         }
 
@@ -83,13 +81,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             border-radius: 10px;
         }
-
-        h2 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #333;
-        }
+   h2 {
+    font-weight: 500;
+    margin-bottom: 25px;
+    color: #0d6efd;
+    font-size: 22px; /* medium heading */
+}
 
         label {
             font-weight: bold;

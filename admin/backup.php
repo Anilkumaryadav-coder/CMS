@@ -4,11 +4,12 @@
 <meta charset="UTF-8">
 <title>Backup Settings | CMS</title>
 
-<!-- Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-<link rel="stylesheet" href="/cms/css/styles.css">
-
+<!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+   <!-- Custom CSS -->
+  <link rel="stylesheet" href="/cms/css/styles.css">
 <style>
 body{
     margin:0;
@@ -21,6 +22,7 @@ body{
     display:flex;
     min-height:100vh;
 }
+
 
 /* Content */
 .content{
@@ -44,7 +46,12 @@ body{
     padding:35px;
     box-shadow:0 20px 45px rgba(0,0,0,.08);
 }
-
+h2 {
+    font-weight: 500;
+    margin-bottom: 25px;
+    color: #0d6efd;
+    font-size: 22px; /* medium heading */
+}
 /* Section heading */
 .section-title{
     font-size:22px;
