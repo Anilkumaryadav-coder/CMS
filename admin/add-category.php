@@ -3,7 +3,7 @@ include 'db.php';
 
 /* Fetch clients */
 $clients = [];
-$clientQuery = mysqli_query($conn, "SELECT id, full_name, company_name FROM clients ORDER BY full_name ASC");
+$clientQuery = mysqli_query($conn, "SELECT id, full_name, company_name, website FROM clients ORDER BY full_name ASC");
 if ($clientQuery) {
     while ($row = mysqli_fetch_assoc($clientQuery)) {
         $clients[] = $row;
@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
      '$show_nav', '$featured', '$notes')";
 
     if (mysqli_query($conn, $sql)) {
-        echo "<script>alert('Category Added Successfully'); window.location='view-categories.php';</script>";
+        echo "<script>alert('Category Added Successfully'); window.location='view-category.php';</script>";
     } else {
         echo "Error: " . mysqli_error($conn);
     }
@@ -69,9 +69,10 @@ if (isset($_POST['submit'])) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
    <!-- Custom CSS -->
   <link rel="stylesheet" href="/cms/css/styles.css">
+
+
+
 <style>
-
-
 .container {
     margin-left: 260px;
     padding: 30px;
@@ -169,8 +170,8 @@ button[type="submit"]:hover {
     <?php foreach ($clients as $client) { ?>
         <option value="<?= $client['id']; ?>">
             <?= htmlspecialchars($client['full_name']); ?>
-            <?php if (!empty($client['company_name'])) { ?>
-                (<?= htmlspecialchars($client['company_name']); ?>)
+            <?php if (!empty($client['website'])) { ?>
+                (<?= htmlspecialchars($client['website']); ?>)
             <?php } ?>
         </option>
     <?php } ?>

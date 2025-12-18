@@ -3,12 +3,21 @@ include 'db.php';
 
 /* Fetch clients */
 $clients = [];
-$clientQuery = mysqli_query($conn, "SELECT id, full_name, company_name FROM clients ORDER BY full_name ASC");
+$clientQuery = mysqli_query($conn, "SELECT id, full_name, company_name, website FROM clients ORDER BY full_name ASC");
 if ($clientQuery) {
     while ($row = mysqli_fetch_assoc($clientQuery)) {
         $clients[] = $row;
     }
 }
+
+/* Fetch categories */
+$catResult = mysqli_query(
+    $conn,
+    "SELECT id, category_name 
+     FROM categories 
+     WHERE status = 1 
+     ORDER BY display_order ASC"
+);
 
 if (isset($_POST['submit'])) {
 
@@ -172,8 +181,8 @@ textarea { resize: vertical; }
     <?php foreach ($clients as $client) { ?>
         <option value="<?= $client['id']; ?>">
             <?= htmlspecialchars($client['full_name']); ?>
-            <?php if (!empty($client['company_name'])) { ?>
-                (<?= htmlspecialchars($client['company_name']); ?>)
+            <?php if (!empty($client['website'])) { ?>
+                (<?= htmlspecialchars($client['website']); ?>)
             <?php } ?>
         </option>
     <?php } ?>
@@ -191,20 +200,28 @@ textarea { resize: vertical; }
 
           <div class="col-md-6">
             <label>Product Name</label>
-            <input type="text" class="form-control input-md">
+             <input type="text" id="product_name" class="form-control input-md">
           </div>
 
-          <div class="col-md-6">
-            <label>Slug</label>
-            <input type="text" class="form-control input-sm">
-          </div>
+        <div class="col-md-6">
+         <label>Slug</label>
+         <input type="text" id="slug" class="form-control input-sm">
+        </div>
 
-          <div class="col-md-4">
-            <label>Category</label>
-            <select class="form-select input-sm">
-              <option>Select</option>
-            </select>
-          </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Category</label>
+                <select name="category_id" class="form-select" required>
+                    <option value="">-- Select Category --</option>
+
+                    <?php while ($cat = mysqli_fetch_assoc($catResult)) { ?>
+                        <option value="<?= $cat['id']; ?>">
+                            <?= htmlspecialchars($cat['category_name']); ?>
+                        </option>
+                    <?php } ?>
+
+                </select>
+            </div>
 
           <div class="col-md-4">
             <label>Status</label>
@@ -322,6 +339,20 @@ textarea { resize: vertical; }
 
   </div>
 </div>
+<script>
+document.getElementById("product_name").addEventListener("keyup", function () {
+    let text = this.value;
+
+    let slug = text
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9\s-]/g, "") // remove special chars
+        .replace(/\s+/g, "-")         // spaces to hyphen
+        .replace(/-+/g, "-");         // remove multiple hyphens
+
+    document.getElementById("slug").value = slug;
+});
+</script>
 
 </body>
 </html>

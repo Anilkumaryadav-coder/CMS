@@ -1,142 +1,104 @@
 <?php
-include "db.php";
-
-$query = "
-SELECT s.*, c.category_name 
-FROM services s
-LEFT JOIN categories c ON s.category_id = c.id
-ORDER BY s.display_order ASC
-";
-
-$result = mysqli_query($conn, $query);
+include 'db.php';
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>View Services | CMS Admin</title>
+<title>View Services</title>
 
-<!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 <link rel="stylesheet" href="/cms/css/styles.css">
-
 <style>
 body {
-  background-color: #f2f6fa;
-  font-family: 'Segoe UI', sans-serif;
+    background: #f5f7fa;
 }
-
-.container {
-  margin-left: 270px;
-  padding: 30px;
+.main-container {
+    margin-left: 260px;
+    padding: 30px;
 }
-
-h2 {
-  font-weight: 700;
-  margin-bottom: 25px;
-  color: #0d6efd;
+.table img {
+    width: 70px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
 }
-
-.table-card {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-}
-
-.table th {
-  background-color: #f1f5fb;
-  font-weight: 600;
-}
-
 .badge-active {
-  background-color: #198754;
+    background: #16a34a;
 }
-
 .badge-inactive {
-  background-color: #dc3545;
-}
-
-.action-btns a {
-  margin-right: 6px;
-}
-
-@media (max-width: 768px) {
-  .container {
-    margin-left: 0;
-    padding: 20px;
-  }
+    background: #dc2626;
 }
 </style>
 </head>
-
 <body>
 
 <?php include 'sidebar.php'; ?>
 
-<div class="container">
+<div class="main-container">
+    <div class="card shadow-sm">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Services List</h5>
+            <a href="services.php" class="btn btn-primary btn-sm">
+                <i class="bi bi-plus"></i> Add Service
+            </a>
+        </div>
 
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>View Services</h2>
-    <a href="add-service.php" class="btn btn-primary">
-      <i class="bi bi-plus-circle"></i> Add Service
-    </a>
-  </div>
+        <div class="card-body">
+            <table class="table table-bordered align-middle table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Image</th>
+                        <th>Service Name</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Featured</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                $i = 1;
+                $query = mysqli_query($conn, "SELECT * FROM services ORDER BY id DESC");
 
-  <div class="table-card">
-    <table class="table table-hover align-middle">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Service Name</th>
-          <th>Category</th>
-          <th>Price</th>
-          <th>Duration</th>
-          <th>Featured</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-<?php $i=1; while($row = mysqli_fetch_assoc($result)) { ?>
-<tr>
-  <td><?= $i++; ?></td>
-  <td><?= htmlspecialchars($row['service_name']); ?></td>
-  <td><?= htmlspecialchars($row['category_name']); ?></td>
-  <td><?= $row['price']; ?></td>
-  <td><?= $row['duration']; ?></td>
-  <td>
-    <span class="badge <?= $row['featured']=='Yes'?'bg-warning text-dark':'bg-secondary'; ?>">
-      <?= $row['featured']; ?>
-    </span>
-  </td>
-  <td>
-    <span class="badge <?= $row['status']=='Active'?'badge-active':'badge-inactive'; ?>">
-      <?= $row['status']; ?>
-    </span>
-  </td>
-  <td class="action-btns">
-    <a href="edit-service.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-warning">
-      <i class="bi bi-pencil-square"></i>
-    </a>
-    <a href="delete-service.php?id=<?= $row['id']; ?>" 
-       class="btn btn-sm btn-danger"
-       onclick="return confirm('Are you sure?')">
-      <i class="bi bi-trash"></i>
-    </a>
-  </td>
-</tr>
-<?php } ?>
-</tbody>
-    </table>
-  </div>
-
+                while ($row = mysqli_fetch_assoc($query)) {
+                ?>
+                    <tr>
+                        <td><?= $i++ ?></td>
+                        <td>
+                       <img src="../uploads/services/<?= $row['image_1']; ?>" width="70">
+                        </td>
+                        <td>
+                            <strong><?= $row['service_name']; ?></strong><br>
+                            <small><?= $row['service_slug']; ?></small>
+                        </td>
+                        <td><?= $row['category']; ?></td>
+                        <td>
+                            <span class="badge <?= $row['status']=='active'?'badge-active':'badge-inactive'; ?>">
+                                <?= ucfirst($row['status']); ?>
+                            </span>
+                        </td>
+                        <td>
+                            <?= $row['featured'] ? '<span class="badge bg-warning text-dark">Yes</span>' : 'No'; ?>
+                        </td>
+                        <td>
+                            <a href="edit-service.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-info">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                            <a href="delete-service.php?id=<?= $row['id']; ?>" 
+                               onclick="return confirm('Delete this service?')" 
+                               class="btn btn-sm btn-danger">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 </body>

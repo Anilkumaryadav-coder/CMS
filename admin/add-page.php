@@ -4,7 +4,7 @@ include "db.php";
 
 /* Fetch clients */
 $clients = [];
-$clientQuery = mysqli_query($conn, "SELECT id, full_name, company_name FROM clients ORDER BY full_name ASC");
+$clientQuery = mysqli_query($conn, "SELECT id, full_name, company_name, website FROM clients ORDER BY full_name ASC");
 if ($clientQuery) {
     while ($row = mysqli_fetch_assoc($clientQuery)) {
         $clients[] = $row;
@@ -161,8 +161,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <?php foreach ($clients as $client) { ?>
         <option value="<?= $client['id']; ?>">
             <?= htmlspecialchars($client['full_name']); ?>
-            <?php if (!empty($client['company_name'])) { ?>
-                (<?= htmlspecialchars($client['company_name']); ?>)
+            <?php if (!empty($client['website'])) { ?>
+                (<?= htmlspecialchars($client['website']); ?>)
             <?php } ?>
         </option>
     <?php } ?>
