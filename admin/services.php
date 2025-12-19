@@ -91,6 +91,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Insert Failed: " . mysqli_error($conn));
     }
 }
+
+/* ===== EDIT MODE ===== */
+$editMode = false;
+$serviceData = [];
+
+if (isset($_GET['edit'])) {
+    $editMode = true;
+    $editId = (int)$_GET['edit'];
+    $editQuery = mysqli_query($conn, "SELECT * FROM services WHERE id='$editId'");
+    $serviceData = mysqli_fetch_assoc($editQuery);
+}
+
 ?>
 
 
@@ -195,6 +207,12 @@ textarea {
             <h3 class="mb-4 text-center">Add Service</h3>
 
             <form action="services.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<?= $serviceData['id'] ?? '' ?>">
+<input type="hidden" name="old_image_1" value="<?= $serviceData['image_1'] ?? '' ?>">
+<input type="hidden" name="old_image_2" value="<?= $serviceData['image_2'] ?? '' ?>">
+<input type="hidden" name="old_image_3" value="<?= $serviceData['image_3'] ?? '' ?>">
+<input type="hidden" name="old_image_4" value="<?= $serviceData['image_4'] ?? '' ?>">
+
                 <!-- BASIC DETAILS -->
                 <div class="section-title">Basic Details</div>
                 <div class="row g-4">
@@ -258,6 +276,7 @@ textarea {
                 <!-- SERVICE IMAGES -->
                 <div class="section-title">Service Images</div>
                 <div class="row g-4">
+                    
                     <div class="col-md-3 col-sm-6">
                         <div class="image-box">
                             <i class="bi bi-image"></i>

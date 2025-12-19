@@ -144,7 +144,7 @@ h2 {
 <div class="container">
 
     <div class="page-header">
-        <h2>View Categories</h2>
+        <h2>View Category</h2>
         <a href="add-category.php" class="btn btn-primary btn-sm">
             <i class="bi bi-plus-circle"></i> Add Category
         </a>

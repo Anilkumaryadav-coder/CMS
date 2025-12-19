@@ -26,14 +26,14 @@ if (isset($_POST['submit'])) {
     $logo_name = "";
     if (!empty($_FILES['logo']['name'])) {
         $logo_name = time() . "-" . $_FILES['logo']['name'];
-        move_uploaded_file($_FILES['logo']['tmp_name'], "uploads/" . $logo_name);
+        move_uploaded_file($_FILES['logo']['tmp_name'], "../uploads/" . $logo_name);
     }
 
     // Upload Documents
     $document_name = "";
     if (!empty($_FILES['documents']['name'])) {
         $document_name = time() . "-" . $_FILES['documents']['name'];
-        move_uploaded_file($_FILES['documents']['tmp_name'], "uploads/" . $document_name);
+        move_uploaded_file($_FILES['documents']['tmp_name'], "../uploads/" . $document_name);
     }
 
     // Insert Query
